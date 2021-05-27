@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.PositionService;
+import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.Position;
 
 @RestController
@@ -23,8 +27,19 @@ public class PositionsController {
 	}
 
 	@GetMapping("/getall")
-	public List<Position> getAll(){
-		return this.positionService.getAll();
+	public DataResult<List<Position>> getAll(){
+		return this.positionService.getAll();							
 	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody Position position) {
+		return this.positionService.add(position);
+	}
+	
+	
+	//Autowired proje ayaga kalkarken altindakini kontrol ediyor
+	//positionService i implemente olani yani positionmanageri new liyor
+	//Bellekte bu new ledigini referansta tutuyor.
+	//Metotta da bu referans calisiyor.
 
 }
