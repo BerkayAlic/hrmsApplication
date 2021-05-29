@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import kodlamaio.hrms.entities.abstracts.User;
 import lombok.AllArgsConstructor;
@@ -23,19 +24,19 @@ import lombok.NoArgsConstructor;
 public class Candidate extends User{
 
 	
-	@NotBlank(message = "Name cannot be null")
+	@NotNull(message = "Name cannot be null")
 	@Column(name="first_name")
 	private String firstName;
 	
-	@NotBlank(message = "LastName cannot be null")
+	@NotNull(message = "LastName cannot be null")
 	@Column(name="last_name")
 	private String lastName;
 	
-	@NotBlank(message = "Nationalid cannot be null")
+	@NotNull(message = "Nationalid cannot be null")
 	@Column(name="national_id")
 	private String nationalid;
 	
-	@NotBlank(message = "Birth Year cannot be null")
+	@NotNull(message = "Birth Year cannot be null")
 	@Column(name="birth_year")
 	private String birthYear;
 	

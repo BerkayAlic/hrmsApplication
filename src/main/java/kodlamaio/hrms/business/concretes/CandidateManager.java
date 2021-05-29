@@ -53,6 +53,10 @@ public class CandidateManager implements CandidateService {
 		
 		if(!emailVerifiy(candidate.getEmail()))
 			return new ErrorResult("Email is not confirmed");
+		
+		if (!candidate.getPassword().equals(candidate.getPasswordRepeat())) {
+			return new ErrorResult("Password should be the same with password repeat");
+		}
 		 			
 		this.candidateDao.save(candidate);
 		return new SuccessDataResult("Candidate is added");

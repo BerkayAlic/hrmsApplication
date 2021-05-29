@@ -44,10 +44,16 @@ public class EmployerManager implements EmployerService{
 		return new ErrorResult("Email is not confirmed");
 		
 		if(!isSameDomain(employer))
-		return new ErrorResult("Domain is not the same");	
+		return new ErrorResult("Domain is not the same");
+		
+		if (!employer.getPassword().equals(employer.getPasswordRepeat())) {
+			return new ErrorResult("Şifre - Şifre tekrarı alanları aynı olmalıdır.");
+		}
 		
 		this.employerDao.save(employer);
 		return new SuccessDataResult("Employer is added");
+		
+		
 	}
 	
 	

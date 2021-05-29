@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
@@ -29,11 +32,15 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
+	@NotNull(message = "Email cannot be null")
 	@Column(name="email")
 	private String email;
 	
+	@NotNull(message = "Password cannot be null")
 	@Column(name="password")
 	private String password;
 	
-	
+	@NotBlank(message = "Şifre tekrarı boş bırakılamaz.")
+	@Transient 
+	private String passwordRepeat;
 }

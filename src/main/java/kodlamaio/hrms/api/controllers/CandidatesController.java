@@ -15,7 +15,7 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.Position;
 
 @RestController
-@RequestMapping("api/candidates/")
+@RequestMapping("api/candidates")
 public class CandidatesController {
 
 	private CandidateService candidateService;
