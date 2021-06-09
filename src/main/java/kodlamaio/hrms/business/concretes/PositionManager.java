@@ -44,7 +44,7 @@ public class PositionManager implements PositionService{
 	@Override
 	public Result add(Position position) {
 		
-		if(this.positionDao.existsByPosition(position.getPosition()))
+		if(this.positionDao.existsByJobTitle(position.getJobTitle()))
 			return new ErrorResult("Position already exist");
 		this.positionDao.save(position);
 		return new SuccessResult("Position is added");

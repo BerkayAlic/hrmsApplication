@@ -15,15 +15,16 @@ import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
-public class JobAdvertisementController {
+public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;
 
 	@Autowired
-	public JobAdvertisementController(JobAdvertisementService jobAdvertisementService) {
+	public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService) {
 		super();
 		this.jobAdvertisementService = jobAdvertisementService;
 	}
@@ -51,5 +52,25 @@ public class JobAdvertisementController {
 	@GetMapping("/getbyenableandemployerid")
 	public DataResult<List<JobAdvertisement>> getByEnableAndEmployerId(@RequestParam int id){
 		return this.jobAdvertisementService.getByEnableAndEmployerId(true, id);							
+	}
+	
+	@GetMapping("/getAllAdvDetails")
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getAllAdvDetails(){
+		return this.jobAdvertisementService.getAllAdvDetails();							
+	}
+	
+	@GetMapping("/getActiveAdvDetails")
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getActiveAdvDetails(){
+		return this.jobAdvertisementService.getActiveAdvDetails(true);							
+	}
+	
+	@GetMapping("/getByActiveAndCreatedAtAdvDetails")
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getByActiveAndCreatedAtAdvDetails(@RequestParam Date createdAt){
+		return this.jobAdvertisementService.getByActiveAndCreatedAtAdvDetails(true, createdAt);							
+	}
+	
+	@GetMapping("/getByActiveAndEmployerIdAdvDetails")
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getByActiveAndEmployerIdAdvDetails(@RequestParam int id){
+		return this.jobAdvertisementService.getByActiveAndEmployerIdAdvDetails(true, id);							
 	}
 }

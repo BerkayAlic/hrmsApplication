@@ -29,23 +29,22 @@ import lombok.NoArgsConstructor;
 public class Employer extends User{
 
 	
-	@NotNull(message="Company name can not be empty")
+	@NotBlank(message="Company name can not be empty")
 	@Column(name="company_name")
 	private String companyName;
 	
-	@NotNull(message="Website can not be empty")
+	@NotBlank(message="Website can not be empty")
 	@Column(name="website")
 	private String webSite;
 	
-	@NotNull(message="Phone number can not be empty")
+	@NotBlank(message="Phone number can not be empty")
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
 	@Column(name="is_activated")
 	private boolean isActivated;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy="employer")
-	private List<JobAdvertisement> jobAdvertisement;
+//	@OneToMany(mappedBy="employer")
+//	private List<JobAdvertisement> jobAdvertisements;
 	
 }

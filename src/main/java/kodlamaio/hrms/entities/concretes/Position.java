@@ -9,14 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 //Getter ve setterlari olusturur.
 @Entity
@@ -40,12 +43,15 @@ public class Position{
 		@Column(name="id")
 		private int id;
 		
-		@Column(name="position")
-		private String position;
+		@NotBlank
+		@Column(name="job_title")
+		private String jobTitle;
 		
 		
-		@OneToMany(mappedBy="position")
-		private List<JobAdvertisement> jobAdvertisements;
+//		@OneToMany(mappedBy="position")
+//		private List<JobAdvertisement> jobAdvertisements;
 		
+//		@OneToMany(mappedBy="position")
+//		private List<JobExperience> JobExperiences;
 		
 }

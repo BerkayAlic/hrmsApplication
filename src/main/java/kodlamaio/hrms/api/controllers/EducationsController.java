@@ -2,36 +2,38 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.CityService;
+import kodlamaio.hrms.business.abstracts.EducationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.City;
+import kodlamaio.hrms.entities.concretes.Education;
 
 @RestController
-@RequestMapping("api/cities")
-public class CityController {
+@RequestMapping("api/educations")
+public class EducationsController {
 
-	private CityService cityService;
+	private EducationService educationService;
 
-	public CityController(CityService cityService) {
+	@Autowired
+	public EducationsController(EducationService educationService) {
 		super();
-		this.cityService = cityService;
+		this.educationService = educationService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<City>> getAll(){
-		return this.cityService.getAll();							
+	public DataResult<List<Education>> getAll(){
+		return this.educationService.getAll();							
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody City city) {
-		return this.cityService.add(city);
+	public Result add(@RequestBody Education education) {
+		return this.educationService.add(education);
 	}
-	
 }

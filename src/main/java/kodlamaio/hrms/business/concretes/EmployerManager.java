@@ -47,7 +47,7 @@ public class EmployerManager implements EmployerService{
 		return new ErrorResult("Domain is not the same");
 		
 		if (!employer.getPassword().equals(employer.getPasswordRepeat())) {
-			return new ErrorResult("Şifre - Şifre tekrarı alanları aynı olmalıdır.");
+			return new ErrorResult("Password - Password repeat should be the same");
 		}
 		
 		this.employerDao.save(employer);
@@ -57,11 +57,11 @@ public class EmployerManager implements EmployerService{
 	}
 	
 	
-	public boolean emailVerifiy(String email) {
+	private boolean emailVerifiy(String email) {
 		return emailVerificationService.emailVerification(email);
 	}
 	
-	public boolean isSameDomain(Employer employer) {
+	private boolean isSameDomain(Employer employer) {
 		
 		boolean result = false ;
 		

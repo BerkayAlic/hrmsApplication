@@ -56,18 +56,18 @@ public class JobAdvertisement {
 	private boolean enable;
 	
 	
-	@ManyToOne()
-	@JoinColumn(name="city_id")
+	@ManyToOne(targetEntity = City.class)
+	@JoinColumn(name="city_id", referencedColumnName =  "id")
 	private City city;
 	
 	
-	@ManyToOne()
-	@JoinColumn(name="employer_id")
+	@ManyToOne(targetEntity = Employer.class)
+	@JoinColumn(name="employer_id" , referencedColumnName =  "userid")
 	private Employer employer;
 	
 	
-	@ManyToOne()
-	@JoinColumn(name="position_id")
+	@ManyToOne(targetEntity = Position.class)
+	@JoinColumn(name="position_id" , referencedColumnName =  "id")
 	private Position position;
 	
 }

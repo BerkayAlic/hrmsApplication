@@ -39,6 +39,6 @@ public class City {
 	private String cityName;
 	
 	
-	@OneToMany(mappedBy="city")
-	private List<JobAdvertisement> jobAdvertisements;
+//	@OneToMany(mappedBy="city")
+//	private List<JobAdvertisement> jobAdvertisements;
 }

@@ -32,13 +32,16 @@ public class User {
 	@Column(name="id")
 	private int id;
 	
+	@NotBlank
 	@NotNull(message = "Email cannot be null")
 	@Column(name="email")
 	private String email;
 	
+	@NotBlank
 	@NotNull(message = "Password cannot be null")
 	@Column(name="password")
 	private String password;
+	
 	
 	@NotBlank(message = "Şifre tekrarı boş bırakılamaz.")
 	@Transient 
